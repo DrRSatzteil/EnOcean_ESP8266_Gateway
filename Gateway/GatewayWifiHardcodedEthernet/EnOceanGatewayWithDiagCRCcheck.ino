@@ -166,7 +166,7 @@ void loop(void)
       if (diagnostic_active)
         clientDiag.println("Waiting for client");
     }
-    client = server.available();
+    client = server.accept();
   }
   if (client.connected()) {
     if (!connection_active) {
@@ -189,7 +189,7 @@ void loop(void)
     if (diagnostic_active) {
       diagnostic_active = false;
     }
-    clientDiag = serverDiag.available();
+    clientDiag = serverDiag.accept();
   }
   if (clientDiag.connected()) {
     if (!diagnostic_active) {
